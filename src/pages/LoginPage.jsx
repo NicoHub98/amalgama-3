@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useUserStore } from "../store";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../components/FormInput";
+import Button from "../components/Button";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -11,11 +12,11 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUser({ email, password }, navigate);
+    setUser({ email, password });
   };
 
   useEffect(() => {
-    if (user.token) navigate("/home");
+    if (user) navigate("/home");
   }, [user]);
 
   return (
@@ -39,12 +40,7 @@ const LoginPage = () => {
             setValue={setPassword}
           />
         </div>
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all"
-        >
-          Login
-        </button>
+        <Button name="Iniciar Sesión" type="submit" />
       </form>
     </div>
   );

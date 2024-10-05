@@ -20,14 +20,17 @@ export const useUserStore = create(
   persist(
     (set) => ({
       user: null,
-      setUser: (user, nav) => {
+      logout: () => {
+        set({ user: null });
+        localStorage.removeItem("user-storage");
+      },
+      setUser: (user) => {
         const loadingToast = toast.loading("Iniciando Sesión...");
 
         login(user.email, user.password)
           .then((response) => {
             toast.update(loadingToast, successToastData);
             set({ user: { email: user.email, token: response.data.token } });
-            nav("/home");
           })
           .catch((error) => {
             toast.update(loadingToast, errorToastData);
