@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <div className="flex justify-center items-center w-full h-screen">
-      <ToastContainer position="bottom-right" theme="light" />
+      <ToastContainer position="bottom-right" theme="light" autoClose={2000} />
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
