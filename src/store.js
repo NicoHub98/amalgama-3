@@ -4,7 +4,7 @@ import { login } from "./functions/login";
 import { toast } from "react-toastify";
 
 const errorToastData = {
-  render: "Error al iniciar sesión",
+  render: "Correo o contraseña incorrectas",
   type: "error",
   isLoading: false,
   autoClose: 2000,

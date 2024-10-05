@@ -3,6 +3,7 @@ import { useUserStore } from "../store";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../components/FormInput";
 import Button from "../components/Button";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -12,6 +13,11 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (email === "" || password === "") {
+      toast.info("Por favor, rellene todos los campos");
+      return;
+    }
     setUser({ email, password });
   };
 
@@ -31,7 +37,6 @@ const LoginPage = () => {
             value={email}
             setValue={setEmail}
           />
-
           <FormInput
             id="password"
             type="password"
